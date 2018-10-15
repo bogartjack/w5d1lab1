@@ -37,6 +37,19 @@ app.get('/fib/:num', (req, res) => {
 	else res.send('not a fibbidoodadicky');
 });
 
+app.get('/fibo/:num', (req, res) => {
+	const n = parseInt(req.params.num);
+	let desired = 1;
+	let before =1; 
+	let index = 0;
+	while (index<n-2){
+		desired = desired+before;
+		before = desired-before;
+		index++;
+	}
+	res.send('your requested fibonacci: ' + desired);
+});
+
 app.listen(3000, () => {
 	console.log('i am listening');
 });
