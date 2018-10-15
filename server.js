@@ -20,6 +20,22 @@ app.get('/magic/:question', (req, res) => {
 	res.send(response);
 });
 
+app.get('/fib/:num', (req, res) => {
+	const n = parseInt(req.params.num);
+	let isFib = false;
+	let before = 1;
+	let i =1;
+	while(i<=n){
+		if (i===n){
+			isFib = true;
+			console.log('merp');
+		}
+		i = i+before;
+		before = i-before;
+	}
+	if(isFib) res.send('this is a fibber boi');
+	else res.send('not a fibbidoodadicky');
+});
 
 app.listen(3000, () => {
 	console.log('i am listening');
